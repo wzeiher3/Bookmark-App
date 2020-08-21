@@ -264,7 +264,7 @@ let formBookmarkListItems = function () {
               <p>Rating: ${generateStarRating(bookmark.rating)}</p>
               <p>${bookmark.desc}</p>
               <div class="deleteBookmark">
-                <label for="buttonDelete">Delete Bookmark: </label>
+                <label for="buttonDelete">Delete/Collapse</label>
                 <button class="buttonDel" name="buttonDelete" type="button">Delete</button>
                 <button class="exitExpand" name="exitExpanded" type="button">Collapse</button>
             </div>                    

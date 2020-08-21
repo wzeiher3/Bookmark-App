@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles.css" type="text/css" rel="stylesheet">
+    <title>Bookmark App</title>
+</head>
+<body>
+    <header class='banner'>
+        <h1  class='mainHeader'>Your Bookmarks</h1>
+    </header>
+
+    <main class='js-main-state' aria-live="assertive">
+        <form class="addBookmarkForm">
+            <fieldset name="formField">
+                <label for="newBookmarkURL">Add a New Bookmark:</label>
+                <input type="text" name="newBookmarkURL" placeholder="http://yourbookmark.com" required><br>
+                <label for="newBookmarkName">Name:</label>
+                <input type="text" name="newBookmarkName" placeholder="site name"><br>
+                <label for="newBookmarkDesc">Description:</label>
+                <input type="text" name="newBookmarkDesc" placeholder="add a description of your bookmark!"><br>
+                <label for="addFilter">Star Rating: </label>
+                <select id="js-addFilter" name="addFilter">
+                    <option value="" selected="selected">Filter</option>
+                    <option value="oneStar" selected="selected">One Star</option>
+                    <option value="twoStar" selected="selected">Two Stars</option>
+                    <option value="threeStar" selected="selected">Three Stars</option>
+                    <option value="fourStar" selected="selected">Four Stars</option>
+                    <option value="fiveStar" selected="selected">Five Stars</option>
+                </select><br>
+                <button class="buttonAddSubmit" type="submit">Submit</button>
+                <button class="buttonAddCancel" type="reset">Cancel</button>
+                <br><a href="./formError.html">formError.html</a>
+            </fieldset>
+        </form>
+        <br><a href="./index.html">index.html</a>
+    </main>
+</body>
+</html>

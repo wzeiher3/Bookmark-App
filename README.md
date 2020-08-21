@@ -1,4 +1,7 @@
 # mark-force-bookmarks-app
+live deployment:
+https://thinkful-ei-rabbit.github.io/mark-force-bookmarks-app/
+
 Bookmarks application for Thinkful
 I built this application for the Thinkful bootcamp Engineering Immersion program.
 The user stories were completed and the details are below.

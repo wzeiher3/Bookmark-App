@@ -61,12 +61,12 @@ function generateBookmarkElement(item){
         <li class="js-bookmark-element_expanded" data-item-id="${item.id}">
           ${itemTitle}
           <form action="${item.url}" class="expanded-items">
-            <input type="submit" value="Visit" id="visit"/>
+            <input type="submit" value="Visit" onclick="window.location.href='${item.url}';" id="visit"/>
           </form>
           <span id="star_expanded" class="expanded-items">${item.rating}&#9733;</span>
           
           <div>
-            <p>${item.description}</p>
+            <p>${item.desc}</p>
          </div>
         </li>`;
     }
@@ -116,9 +116,21 @@ function toggleExpanded(){
         event.preventDefault();
         alert('bookmark clicked');
         const id = getItemIdFromElement(event.currentTarget);
+        console.log(id);
         console.log(store.findbyId);
         
         const item = store.findbyId(id);
+        console.log(item);
+        item.expanded = !(item.expanded);
+        console.log(store.list.bookmarks);
+        render();
+    })
+    $('main').on('click', '.js-bookmark-element_expanded', function(event){
+        event.preventDefault();
+        const id = getItemIdFromElement(event.currentTarget);
+        const item = store.findbyId(id);
+        console.log(item);
+        alert('found');
         item.expanded = !(item.expanded);
         console.log(store.list.bookmarks);
         render();
@@ -221,11 +233,24 @@ function handleNewBookmarkSubmit(){
 }
 
 
+function handleDeleteItemClicked(){
+    $('main').on('click', '#visit', event => {
+      const id = getItemIdFromElement(event.currentTarget);
+  
+      api.deleteItem(id)
+        .then(() => {
+          store.findAndDelete(id);
+          render();
+        })
+    });
+  };
+
 function bindEventListeners(){
     filter();
     toggleExpanded();
     handleAddNewClick();
     handleNewBookmarkSubmit();
+    handleDeleteItemClicked();
 };
 
 export default{

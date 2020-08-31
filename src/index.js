@@ -12,8 +12,7 @@ function main(){
     api.getItems()
     .then((items) => {
       items.forEach(function(item){
-        item.expanded = false;
-        item.rating = 3; 
+        item.expanded = false; 
         store.addBookmark(item);
       });
       bm.render();

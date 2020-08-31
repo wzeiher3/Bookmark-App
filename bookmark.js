@@ -226,6 +226,7 @@ function bindEventListeners(){
     toggleExpanded();
     handleAddNewClick();
     handleNewBookmarkSubmit();
+    handle
 };
 
 export default{

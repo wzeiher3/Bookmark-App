@@ -62,12 +62,13 @@ function generateBookmarkElement(item){
           ${itemTitle}
           <form action="${item.url}" class="expanded-items">
             <input type="submit" value="Visit" onclick="window.location.href='${item.url}';" id="visit"/>
+            <input type="submit" value="Delete" id="Delete"/>
           </form>
           <span id="star_expanded" class="expanded-items">${item.rating}&#9733;</span>
           
-          <div>
-            <p>${item.desc}</p>
-         </div>
+        
+        <p>${item.desc}</p>
+         
         </li>`;
     }
 
@@ -125,10 +126,14 @@ function toggleExpanded(){
         console.log(store.list.bookmarks);
         render();
     })
+}
+
+function toggleCollapse(){
     $('main').on('click', '.js-bookmark-element_expanded', function(event){
         event.preventDefault();
         const id = getItemIdFromElement(event.currentTarget);
         const item = store.findbyId(id);
+        console.log(id);
         console.log(item);
         alert('found');
         item.expanded = !(item.expanded);
@@ -155,6 +160,18 @@ const renderError = function () {
       `;
   };
 
+  function handleDeleteItemClicked(){
+        $('main').on('click', '#Delete', function(event){
+            const id = getItemIdFromElement(event.currentTarget);
+
+            api.deleteItem(id)
+                .then(() => {
+                store.findAndDelete(id);
+                render();
+            })
+    });
+  }
+
 function renderNewBookmark(){
     console.log('new bookmark');
     $('main').html(`
@@ -162,11 +179,11 @@ function renderNewBookmark(){
         <h3>Add a New Bookmark</h3>
         <form class="addBookmark">
          
-            <input class="bookmarkText" id="bookmarkText" type="text" value="URL" required />
+            <input class="bookmarkText" id="bookmarkText" type="text" placeholder="URL" required />
         </form>
         <form class="title">
             
-            <input class="bookmarkTitle" id="bookmarkTitle" type="text" value="Title" required />
+            <input class="bookmarkTitle" id="bookmarkTitle" type="text" placeholder="Title" maxLength = 50 required />
         </form>
         <form class="filterbtns2">
             <input type="radio" name="choice" id="1star"> 1<span id="Fstar">&#9733;</span>
@@ -233,24 +250,13 @@ function handleNewBookmarkSubmit(){
 }
 
 
-function handleDeleteItemClicked(){
-    $('main').on('click', '#visit', event => {
-      const id = getItemIdFromElement(event.currentTarget);
-  
-      api.deleteItem(id)
-        .then(() => {
-          store.findAndDelete(id);
-          render();
-        })
-    });
-  };
-
 function bindEventListeners(){
     filter();
     toggleExpanded();
     handleAddNewClick();
     handleNewBookmarkSubmit();
     handleDeleteItemClicked();
+    toggleCollapse();
 };
 
 export default{
@@ -263,5 +269,4 @@ export default{
     generateBookmarkElementString, 
     renderNewBookmark
 }
-
 //$(bindEventListeners);

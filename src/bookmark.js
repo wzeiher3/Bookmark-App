@@ -62,12 +62,13 @@ function generateBookmarkElement(item){
           ${itemTitle}
           <form action="${item.url}" class="expanded-items">
             <input type="submit" value="Visit" onclick="window.location.href='${item.url}';" id="visit"/>
-            <input type="submit" value="Delete" id="Delete"/>
+            <button type="submit" value="Delete" id="Delete">Delete</button>
           </form>
           <span id="star_expanded" class="expanded-items">${item.rating}&#9733;</span>
           
         
         <p>${item.desc}</p>
+        <button type="submit" id="expand" value="Close">Close</button>
          
         </li>`;
     }
@@ -129,7 +130,7 @@ function toggleExpanded(){
 }
 
 function toggleCollapse(){
-    $('main').on('click', '.js-bookmark-element_expanded', function(event){
+    $('main').on('click', '#expand', function(event){
         event.preventDefault();
         const id = getItemIdFromElement(event.currentTarget);
         const item = store.findbyId(id);
@@ -162,11 +163,13 @@ const renderError = function () {
 
   function handleDeleteItemClicked(){
         $('main').on('click', '#Delete', function(event){
+            alert('delete');
             const id = getItemIdFromElement(event.currentTarget);
 
             api.deleteItem(id)
                 .then(() => {
                 store.findAndDelete(id);
+                //console.log(store.list.bookmarks)
                 render();
             })
     });

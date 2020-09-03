@@ -1,6 +1,5 @@
-# mark-force-bookmarks-app
 live deployment:
-https://thinkful-ei-rabbit.github.io/mark-force-bookmarks-app/
+
 
 Bookmarks application for Thinkful
 I built this application for the Thinkful bootcamp Engineering Immersion program.
@@ -19,18 +18,16 @@ description
 rating (1-5)
 (completed)
 I can see a list of my bookmarks when I first open the app
-(completed, main renders on load)
+(completed)
 
-All bookmarks in the list default to a "condensed" view showing only title and rating
-I can click on a bookmark to display the "detailed" view
-(completed, all bookmarks condense and expand with mouse and keyboard)
 
-Detailed view expands to additionally display description and a "Visit Site" link
+I can click on a bookmark to display an expanded view to show more details
+(completed)
+
+Expanded view expands to additionally display description and a "URL" link
 I can remove bookmarks from my bookmark list
-(completed, detailed view shows delete button to remove bookmark)
+(completed)
 
-I receive appropriate feedback when I cannot submit a bookmark
-(the appropiate error message pops up as a modal to let user know about the error, clicking anywhere else closes modal)
 
 Check all validations in the API documentation (e.g. title and url field required)
 I can select from a dropdown (a <select> element) a "minimum rating" to filter the list by all bookmarks rated at or above the chosen selection

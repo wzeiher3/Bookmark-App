@@ -4,20 +4,40 @@
     color: #212922;
   }
   
-  body {
-    background-image: url('images/bookmark-real-bg.jpg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
-    color: #212922;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin-left: 20%;
-    margin-right: 20%;
-    height: 100%;
+  @media only screen and (max-width: 600px) {
+    body {
+      background-image: url('images/pexels-felix-mittermeier-956999.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      color: #212922;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-left: 20%;
+      margin-right: 20%;
+      height: 100%;
+    }
+  }
+  
+  @media screen and (max-width: 992px) {
+    body {
+      background-image: url('images/pexels-felix-mittermeier-956999.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      color: #212922;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-left: 20%;
+      margin-right: 20%;
+      height: 100%;
+    }
   }
   
   .mainHeader {
@@ -30,15 +50,7 @@
   
   h1 {
     font-size: 2rem;
-  }
-  
-  .js-mainWindow {
-    text-align: center;
-    border-color: #212922;
-    border-style: groove;
-    border-width: 2px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px 2px;
+    color: white;
   }
   
   .upperContainer {
@@ -53,7 +65,23 @@
     margin: 5px 5px 5px 5px;
   }
   
-  .filterBy {
+  body {
+    background-image: url('images/pexels-felix-mittermeier-956999.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    color: #212922;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-left: 20%;
+    margin-right: 20%;
+    height: 100%;
+  }
+  
+  .Filter {
     width: auto;
     height: auto;
     margin-top: 10px;
@@ -74,35 +102,14 @@
     font-size: 18px;
   }
   
-  .buttonNew {
-    display: inline-block;
-    width: 175px;
-  }
+ 
 
-  .buttonAddSubmit {
-    margin-top: 5px;
-  }
+
 
   .buttonCancelSubmit {
     margin-top: 5px;
   }
 
-  .js-filter {
-    margin-top: 10px;
-  }
-
-  .jsBookmarkElement {
-    display: block;
-    border-style: outset;
-    border-width: 1px;
-    border-radius: 5px;
-    padding: 0 10px;
-    margin-bottom: 5px;
-    text-overflow: ellipsis;
-    text-align: center;
-    color: black;
-    font-size: 1em;
-  }
 
   
   ul, ul .expanded {
@@ -121,20 +128,6 @@
   }
 
   button {
-    /* box-shadow:inset 0px 1px 0px 0px #bbdaf7;
-    background:linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
-    background-color:#26425e;
-    border-radius:6px;
-    border:1px solid #152e11;
-    display:inline-block;
-    cursor:pointer;
-    color:#ffffff;
-    font-family:Arial;
-    font-size:15px;
-    font-weight:bold;
-    padding:6px 24px;
-    text-decoration:none;
-    text-shadow:0px 1px 0px #528ecc; */
       color: #20494d;	
       padding: 15px 25px;
       display: inline-block;
@@ -163,6 +156,19 @@ button:hover {
 a {
   margin-left: auto;
   margin-right: auto;
+}
+
+button {
+  color: #20494d;	
+  padding: 15px 25px;
+  display: inline-block;
+  border: 1px solid rgba(0,0,0,0.21);
+  border-bottom-color: rgba(0,0,0,0.34);
+  text-shadow:0 1px 0 rgba(0,0,0,0.15);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.34) inset, 
+              0 2px 0 -1px rgba(0,0,0,0.13), 
+              0 3px 0 -1px rgba(0,0,0,0.08), 
+              0 3px 13px -1px rgba(0,0,0,0.21);
 }
 
 
@@ -226,3 +232,4 @@ a {
 	box-shadow: 0 1px 0 rgba(255,255,255,0.89),0 1px rgba(0,0,0,0.05) inset;
 	position: relative;
 }
+

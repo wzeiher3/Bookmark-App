@@ -1,6 +1,11 @@
-import { data } from "jquery";
+const BASE_URL = 'https://thinkful-list-api.herokuapp.com/Will';
 
-const BASE_URL = 'https://thinkful-list-api.herokuapp.com/markf'
+/**
+ * listApiFetch - Wrapper function for native `fetch` to standardize error handling. 
+ * @param {string} url 
+ * @param {object} options 
+ * @returns {Promise} -
+ */
 
 const listApiFetch = function(...args) {
     let error;
@@ -25,33 +30,46 @@ const listApiFetch = function(...args) {
     })
 };
 
-let getBookmarks = function() {
+let getItems = function() {
     // console.log('bookmarks being fetched')
     return listApiFetch(`${BASE_URL}/bookmarks`);
   }
 
-let createBookmark = function(bookmark) {
-    const newBookmark = JSON.stringify(bookmark)
-    return listApiFetch(BASE_URL + '/bookmarks', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-          },
-          body: newBookmark,
-    })
-};
+const createItem = function (item) {
+    
+    const newItem = JSON.stringify(item);
+    console.log(item);
+    return listApiFetch(`${BASE_URL}/bookmarks`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: newItem
+    });
+  };
 
-const deleteBookmark = function(id) {
+const updateItem = function (id, updateData) {
+    const newData = JSON.stringify(updateData);
+    return listApiFetch(`${BASE_URL}/bookmarks/${id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: newData
+    });
+  };
+
+const deleteItem = function(id) {
     return listApiFetch(BASE_URL + '/bookmarks/' + id, {
         method: 'DELETE'
     })
 }
 
 export default {
-    listApiFetch,
-    getBookmarks,
-    createBookmark,
-    deleteBookmark,
+    getItems,
+    createItem,
+    updateItem,
+    deleteItem
 };
 
 

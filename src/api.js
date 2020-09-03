@@ -1,44 +1,41 @@
-
 const BASE_URL = 'https://thinkful-list-api.herokuapp.com/Will';
+
 /**
  * listApiFetch - Wrapper function for native `fetch` to standardize error handling. 
  * @param {string} url 
  * @param {object} options 
  * @returns {Promise} -
  */
-const listApiFetch = function (...args) {
-    // setup var in scope outside of promise chain
+
+const listApiFetch = function(...args) {
     let error;
     return fetch(...args)
-      .then(res => {
-        if (!res.ok) {
-          error = { code: res.status };
-          if (!res.headers.get('content-type').includes('json')) {
-            error.message = res.statusText;
-            return Promise.reject(error);
-          }
-        } 
-  
-        
-        return res.json();
-      })
-      .then(data => {
-        
-        if (error) {
-          error.message = data.message;
-          return Promise.reject(error);
+        .then(res => {
+            if (!res.ok) {
+                error = { code: res.status }
+            
+            if (!res.headers.get('content-type').includes('json')) {
+                error.message = res.statusText;
+                return Promise.reject(error);
+            }
         }
-  
-        
+        return res.json();
+    })
+    .then(data => {
+        if (error) {
+            error.message = data.message;
+            return Promise.reject(error)
+        }
         return data;
-      });
-  };
+    })
+};
 
-  const getItems = function () {
+let getItems = function() {
+    // console.log('bookmarks being fetched')
     return listApiFetch(`${BASE_URL}/bookmarks`);
-  }; 
+  }
 
-  const createItem = function (item) {
+const createItem = function (item) {
     
     const newItem = JSON.stringify(item);
     console.log(item);
@@ -50,8 +47,8 @@ const listApiFetch = function (...args) {
       body: newItem
     });
   };
-  
-  const updateItem = function (id, updateData) {
+
+const updateItem = function (id, updateData) {
     const newData = JSON.stringify(updateData);
     return listApiFetch(`${BASE_URL}/bookmarks/${id}`, {
       method: 'PATCH',
@@ -62,15 +59,17 @@ const listApiFetch = function (...args) {
     });
   };
 
-  const deleteItem = function (id) {
+const deleteItem = function(id) {
     return listApiFetch(BASE_URL + '/bookmarks/' + id, {
-      method: 'DELETE'
-    });
-  };
+        method: 'DELETE'
+    })
+}
 
-export default{
-  getItems,
-  createItem,
-  updateItem,
-  deleteItem
-} 
+export default {
+    getItems,
+    createItem,
+    updateItem,
+    deleteItem
+};
+
+

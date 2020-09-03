@@ -1,27 +1,11 @@
 import $ from 'jquery';
-import 'normalize.css';
-import './index.css';
+import './styles.css';
+import list from './bookmarks';
 
-import api from './api.js';
-import store from './store.js';
-import bm from './bookmark.js';
-
-
-function main(){
-    console.log("hello");
-    api.getItems()
-    .then((items) => {
-      items.forEach(function(item){
-        item.expanded = false; 
-        store.addBookmark(item);
-      });
-      bm.render();
-    });
-
-    
-    bm.render();
-    console.log(store.list.bookmarks);
-    bm.bindEventListeners();
-} 
-
-$(main);
+const main = function () {
+    list.initialize();
+    list.bindEventListeners();
+  };
+  
+  $(main);
+  

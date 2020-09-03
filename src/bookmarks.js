@@ -32,16 +32,16 @@ function closeBookmark() {
   })
 }
 
-function generateStars(starNum) {
-  let starStr = '';
+function generateStars(star) {
+  let thisString = '';
   for (let i = 0; i < 5; i++) {
-    if (i < starNum) {
-      starStr += '&#9733'
+    if (i < star) {
+      thisString += '&#9733'
     } else {
-      starStr += '&#9734'
+      thisString += '&#9734'
     }
   }
-  return starStr;
+  return thisString;
 }
 
 // function toggleExpanded(){
@@ -111,9 +111,9 @@ let render = function () {
   if (store.adding) {
     $('.Main').html(generateAddBookmark())
   } else {
-    const htmlString = generateMainPage();
+    const bookmarkString = generateMainPage();
     
-    $('.Main').html(htmlString);
+    $('.Main').html(bookmarkString);
   }
 }
 
@@ -132,7 +132,7 @@ let getId = function (bookmark) {
     .data('bookmark-id')
 }
 
-let handleAdd = function () {
+let handleAdding = function () {
   $('.Main').on('click', '.newBtn', function () {
   
     store.adding = true;
@@ -313,7 +313,7 @@ let generateBookmarkList = function () {
 
 
 let bindEventListeners = function () {
-  handleAdd();
+  handleAdding();
   handleExpandClick();
   handleSubmitBookmark();
   cancelClicked();
